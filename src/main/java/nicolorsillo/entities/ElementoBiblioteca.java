@@ -9,9 +9,9 @@ import java.util.UUID;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "tipo_elemento")
 public abstract class ElementoBiblioteca {
-        @Id
-        @GeneratedValue
-        private UUID id;
+    @Id
+    @GeneratedValue
+    private UUID id;
 
     @Column(name = "codice_isbn", nullable = false, unique = true)
     private String codiceISBN;
@@ -27,13 +27,14 @@ public abstract class ElementoBiblioteca {
 
     // Constructor
 
-    protected ElementoBiblioteca() {}
+    protected ElementoBiblioteca() {
+    }
 
     public ElementoBiblioteca(String codiceISBN, String titolo, int annoPubblicazione, long numeroPagine) {
-            this.codiceISBN = codiceISBN;
-            this.titolo = titolo;
-            this.annoPubblicazione = annoPubblicazione;
-            this.numeroPagine = numeroPagine;
+        this.codiceISBN = codiceISBN;
+        this.titolo = titolo;
+        this.annoPubblicazione = annoPubblicazione;
+        this.numeroPagine = numeroPagine;
     }
 
     // Getter
@@ -44,6 +45,10 @@ public abstract class ElementoBiblioteca {
 
     public String getTitolo() {
         return titolo;
+    }
+
+    public int getAnnoPubblicazione() {
+        return annoPubblicazione;
     }
 
     @Override

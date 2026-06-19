@@ -5,18 +5,23 @@ import jakarta.persistence.Entity;
 
 @Entity
 @DiscriminatorValue("Libro")
-public class Libro extends ElementoBiblioteca{
+public class Libro extends ElementoBiblioteca {
     private String autore;
     private String genere;
 
     // Constructor
 
-    protected  Libro() {
+    protected Libro() {
     }
+
     public Libro(String codiceIsbn, String titolo, int annoPubblicazione, long numeroPagine, String autore, String genere) {
         super(codiceIsbn, titolo, annoPubblicazione, numeroPagine);
         this.autore = autore;
         this.genere = genere;
+    }
+
+    public String getAutore() {
+        return autore;
     }
 
     @Override
@@ -24,6 +29,6 @@ public class Libro extends ElementoBiblioteca{
         return super.toString() +
                 "autore='" + autore + '\'' +
                 ", genere='" + genere + '\'' +
-                "}" ;
+                "}";
     }
 }

@@ -5,10 +5,13 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import nicolorsillo.dao.ElementiBibliotecaDAO;
-import nicolorsillo.entities.Libro;
-import nicolorsillo.entities.Periodicita;
-import nicolorsillo.entities.Rivista;
+import nicolorsillo.dao.UtentiDAO;
+import nicolorsillo.entities.*;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 public class Application {
@@ -18,9 +21,10 @@ public class Application {
     public static void main(String[] args) {
         EntityManager em = entityManagerFactory.createEntityManager();
         ElementiBibliotecaDAO elementiBibliotecaDAO = new ElementiBibliotecaDAO(em);
-       /* Faker faker = new Faker();
+        UtentiDAO utentiDAO = new UtentiDAO(em);
+        Faker faker = new Faker();
         Random random = new Random();
-
+ /*
         for (int i = 0; i < 20; i++) {
             String isbn = faker.code().isbn10();
             String titolo = faker.book().title();
@@ -58,11 +62,32 @@ public class Application {
         */
 
 
-/*
+        /*
         System.out.println(elementiBibliotecaDAO.findByISBN("109388309X"));
         elementiBibliotecaDAO.deleteByISBN("109388309X");
         System.out.println(elementiBibliotecaDAO.findByISBN("109388309X"));
-*/
+        */
+        /*
+        List<Libro> libriTrovati = elementiBibliotecaDAO.findByAutore("Mr.");
+        for (Libro l : libriTrovati) {
+            System.out.println(l.getTitolo() + " - " + l.getAutore());
+        }
 
+        List<ElementoBiblioteca> elementiTrovati = elementiBibliotecaDAO.findByAnnoPubblicazione(1903);
+        for (ElementoBiblioteca e : elementiTrovati) {
+            System.out.println(e.getTitolo() + " - " + e.getAnnoPubblicazione());
+        }
+        */
+        /*
+        for (int i = 0; i < 20; i++) {
+            String nome = faker.name().firstName();
+            String cognome = faker.name().lastName();
+            LocalDate dataDiNascita = LocalDate.ofInstant(faker.date().birthday(13, 90).toInstant(), ZoneId.systemDefault());
+            long numeroTessera = faker.number().randomNumber(12, true);
+
+            Utente nuovoUtente = new Utente(nome, cognome, dataDiNascita, numeroTessera);
+            utentiDAO.save(nuovoUtente);
+        }
+        */
     }
 }
