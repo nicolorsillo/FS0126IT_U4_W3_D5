@@ -25,6 +25,8 @@ public class Utente {
     @Column(name = "numero_tessera", nullable = false, unique = true)
     private long numeroTessera;
 
+    // Constructor
+
     protected Utente() {}
 
     public Utente(String nome, String cognome, LocalDate dataDiNascita, long numeroTessera) {
@@ -32,6 +34,21 @@ public class Utente {
         this.cognome = cognome;
         this.dataDiNascita = dataDiNascita;
         this.numeroTessera = numeroTessera;
+    }
+
+    //Getter
+
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getCognome() {
+        return cognome;
+    }
+
+    public long getNumeroTessera() {
+        return numeroTessera;
     }
 
     @Override

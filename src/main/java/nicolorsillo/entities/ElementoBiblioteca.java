@@ -14,7 +14,7 @@ public abstract class ElementoBiblioteca {
         private UUID id;
 
     @Column(name = "codice_isbn", nullable = false, unique = true)
-    private String codiceIsbn;
+    private String codiceISBN;
 
     @Column(name = "titolo", nullable = false)
     private String titolo;
@@ -25,24 +25,35 @@ public abstract class ElementoBiblioteca {
     @Column(name = "numero_pagine")
     private long numeroPagine;
 
-        protected ElementoBiblioteca() {}
+    // Constructor
 
-    public ElementoBiblioteca(String codiceIsbn, String titolo, int annoPubblicazione, long numeroPagine) {
-            this.codiceIsbn = codiceIsbn;
+    protected ElementoBiblioteca() {}
+
+    public ElementoBiblioteca(String codiceISBN, String titolo, int annoPubblicazione, long numeroPagine) {
+            this.codiceISBN = codiceISBN;
             this.titolo = titolo;
             this.annoPubblicazione = annoPubblicazione;
             this.numeroPagine = numeroPagine;
     }
 
+    // Getter
+
+    public String getCodiceISBN() {
+        return codiceISBN;
+    }
+
+    public String getTitolo() {
+        return titolo;
+    }
 
     @Override
     public String toString() {
         return "ElementoBiblioteca{" +
                 "id=" + id +
-                ", codiceIsbn='" + codiceIsbn + '\'' +
+                ", codiceISBN='" + codiceISBN + '\'' +
                 ", titolo='" + titolo + '\'' +
                 ", annoPubblicazione=" + annoPubblicazione +
                 ", numeroPagine=" + numeroPagine +
-                '}';
+                " ";
     }
 }

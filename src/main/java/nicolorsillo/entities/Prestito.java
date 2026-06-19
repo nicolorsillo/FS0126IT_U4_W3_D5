@@ -3,7 +3,6 @@ package nicolorsillo.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 @Entity
 public class Prestito {
@@ -28,6 +27,8 @@ public class Prestito {
     @Column(name = "data_restituzione_effettiva")
     private LocalDate dataRestituzioneEffettiva;
 
+    // Constructor
+
     protected Prestito() {}
 
     public Prestito(Utente utente, ElementoBiblioteca elementoPrestato, LocalDate dataInizioPrestito) {
@@ -35,5 +36,45 @@ public class Prestito {
         this.elementoPrestato = elementoPrestato;
         this.dataInizioPrestito = dataInizioPrestito;
         this.dataRestituzionePrevista = dataInizioPrestito.plusDays(30);
+    }
+
+    //Getter
+
+    public Utente getUtente() {
+        return utente;
+    }
+
+    public ElementoBiblioteca getElementoPrestato() {
+        return elementoPrestato;
+    }
+
+    public LocalDate getDataInizioPrestito() {
+        return dataInizioPrestito;
+    }
+
+    public LocalDate getDataRestituzionePrevista() {
+        return dataRestituzionePrevista;
+    }
+
+    public LocalDate getDataRestituzioneEffettiva() {
+        return dataRestituzioneEffettiva;
+    }
+
+    //Setter
+
+    public void setDataRestituzioneEffettiva(LocalDate dataRestituzioneEffettiva) {
+        this.dataRestituzioneEffettiva = dataRestituzioneEffettiva;
+    }
+
+    @Override
+    public String toString() {
+        return "Prestito{" +
+                "id=" + id +
+                ", utente=" + utente.getNome() + " " + utente.getCognome() + " " + utente.getNumeroTessera() +
+                ", elementoPrestato=" + elementoPrestato.getTitolo() + " " + elementoPrestato.getCodiceISBN() +
+                ", dataInizioPrestito=" + dataInizioPrestito +
+                ", dataRestituzionePrevista=" + dataRestituzionePrevista +
+                (dataRestituzioneEffettiva != null ? ", dataRestituzioneEffettiva=" + dataRestituzioneEffettiva : "") +
+                '}';
     }
 }

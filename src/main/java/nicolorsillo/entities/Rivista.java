@@ -12,6 +12,8 @@ public class Rivista  extends ElementoBiblioteca{
     @Enumerated(EnumType.STRING)
     private Periodicita periodicita;
 
+    // Constructor
+
     protected Rivista(){}
 
     public Rivista(String codiceIsbn, String titolo, int annoPubblicazione, long numeroPagine, Periodicita periodicita){
@@ -21,8 +23,8 @@ public class Rivista  extends ElementoBiblioteca{
 
     @Override
     public String toString() {
-        return "Rivista{" +
+        return super.toString() +
                 "periodicita=" + periodicita +
-                "} " + super.toString();
+                "}";
     }
 }

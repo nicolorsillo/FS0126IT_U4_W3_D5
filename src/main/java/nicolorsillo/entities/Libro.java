@@ -9,6 +9,8 @@ public class Libro extends ElementoBiblioteca{
     private String autore;
     private String genere;
 
+    // Constructor
+
     protected  Libro() {
     }
     public Libro(String codiceIsbn, String titolo, int annoPubblicazione, long numeroPagine, String autore, String genere) {
@@ -19,9 +21,9 @@ public class Libro extends ElementoBiblioteca{
 
     @Override
     public String toString() {
-        return "Libro{" +
+        return super.toString() +
                 "autore='" + autore + '\'' +
                 ", genere='" + genere + '\'' +
-                "} " + super.toString();
+                "}" ;
     }
 }
