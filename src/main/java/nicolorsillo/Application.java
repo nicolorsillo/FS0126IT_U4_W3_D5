@@ -5,6 +5,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import nicolorsillo.dao.ElementiBibliotecaDAO;
+import nicolorsillo.dao.PrestitiDAO;
 import nicolorsillo.dao.UtentiDAO;
 import nicolorsillo.entities.*;
 
@@ -22,6 +23,7 @@ public class Application {
         EntityManager em = entityManagerFactory.createEntityManager();
         ElementiBibliotecaDAO elementiBibliotecaDAO = new ElementiBibliotecaDAO(em);
         UtentiDAO utentiDAO = new UtentiDAO(em);
+        PrestitiDAO prestitiDAO = new PrestitiDAO(em);
         Faker faker = new Faker();
         Random random = new Random();
  /*
@@ -89,5 +91,32 @@ public class Application {
             utentiDAO.save(nuovoUtente);
         }
         */
+
+        Utente marcell = utentiDAO.findByNumeroTessera(415052536710L);
+        Utente ernesto = utentiDAO.findByNumeroTessera(418256045703L);
+        ElementoBiblioteca anticHay = elementiBibliotecaDAO.findByISBN("1821301005");
+        ElementoBiblioteca aTimeToKill = elementiBibliotecaDAO.findByISBN("1205749888");
+
+//        Prestito nuovoPrestito = new Prestito(marcell, anticHay, LocalDate.now().minusDays(23));
+//        Prestito nuovoPrestito = new Prestito(ernesto, aTimeToKill, LocalDate.now().minusDays(23))
+//        Prestito nuovoPrestito = new Prestito(marcel, aTimeToKill, LocalDate.now().minusDays(23));
+//        Prestito nuovoPrestito = new Prestito(ernesto, anticHay, LocalDate.now().minusDays(50));
+//        prestitiDAO.save(nuovoPrestito);
+
+/*
+       List<Prestito> prestitiAttivi = prestitiDAO.findPrestitiDaNumeroTessera(418256045703L);
+        for (Prestito p : prestitiAttivi) {
+            System.out.println(p);
+        }
+        */
+/*
+        List<Prestito> prestitiScaduti = prestitiDAO.findPrestitiScaduti();
+        for (Prestito p : prestitiScaduti) {
+            System.out.println(p);
+        }
+*/
+//        prestitiDAO.registraRestituzione(415052536710L, "1821301005", LocalDate.now());
+
+
     }
 }
